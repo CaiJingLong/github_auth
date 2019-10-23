@@ -17,7 +17,9 @@
             redirect_uri: 'https://github.com/login/oauth/access_token'
           },
           url: 'https://github.com/login/oauth/access_token',
-          xhrFields: { 'Access-Control-Allow-Origin': '*' },
+          headers: {
+            'Access-Control-Allow-Origin': '*'
+          },
           success: function(resp) {
             console.log(resp);
           }
