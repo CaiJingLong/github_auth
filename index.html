@@ -1,12 +1,13 @@
 <html>
   <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="utf8" />
     <script>
       function setText(text) {
-        var n = document.getElementById('aa');
-        n.innerText = text;
+        $('aa').text = text;
       }
-      window.onload = function() {
+
+      $(document).ready(function() {
         var query = window.location.search.substring(1);
         var vars = query.split('&');
         for (var i = 0; i < vars.length; i++) {
@@ -15,7 +16,7 @@
             setText(pair[1]);
           }
         }
-      };
+      });
     </script>
   </head>
   <body>
