@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="utf8" />
+    <script>
+      function setText(text) {
+        var n = document.getElementById('aa');
+        n.innerText = text;
+      }
+      window.onload = function() {
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          if (pair[0] == 'code') {
+            setText(pair[1]);
+          }
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <div id="aa"></div>
+  </body>
+</html>
