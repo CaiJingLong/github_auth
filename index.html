@@ -4,7 +4,22 @@
     <meta charset="utf8" />
     <script>
       function setText(text) {
-        $('aa').text = text;
+        $('#aa').text(text);
+      }
+
+      function fetchAuth(code) {
+        $.post({
+          data: {
+            client_id: '18802538c2ec3de85cca',
+            client_secret: '441a65dc55bd4a4e6376b99a6befc4b36f2100cc',
+            code: code,
+            redirect_uri: 'https://github.com/login/oauth/access_token'
+          },
+          url: 'https://github.com/login/oauth/access_token',
+          success: function(resp) {
+            console.log(resp);
+          }
+        });
       }
 
       $(document).ready(function() {
@@ -13,7 +28,9 @@
         for (var i = 0; i < vars.length; i++) {
           var pair = vars[i].split('=');
           if (pair[0] == 'code') {
-            setText(pair[1]);
+            let code = pair[1];
+            setText(code);
+            fetchAuth(code);
           }
         }
       });
