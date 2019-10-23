@@ -8,7 +8,8 @@
       }
 
       function fetchAuth(code) {
-        $.post({
+        $.ajax({
+          type: 'POST',
           data: {
             client_id: '18802538c2ec3de85cca',
             client_secret: '441a65dc55bd4a4e6376b99a6befc4b36f2100cc',
@@ -16,6 +17,7 @@
             redirect_uri: 'https://github.com/login/oauth/access_token'
           },
           url: 'https://github.com/login/oauth/access_token',
+          xhrFields: { 'Access-Control-Allow-Origin': '*' },
           success: function(resp) {
             console.log(resp);
           }
